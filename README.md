@@ -45,7 +45,7 @@ The new function should...
 ```js
 const returnsTrue = () => true;
 const returnsFalse = invert(returnsTrue);
-returnsFalse(); // returns true
+returnsFalse(); // returns false
 ```
 
 ```js
