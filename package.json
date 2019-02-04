@@ -1,0 +1,18 @@
+{
+  "name": "FT_CORE_BLOCK_REVIEW_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "challenge1.js",
+  "scripts": {
+    "test": "mocha spec"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0",
+    "sinon": "^4.5.0"
+  }
+}
