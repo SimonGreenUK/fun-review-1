@@ -1,4 +1,4 @@
-# CORE BLOCK REVIEW
+# FUNDAMENTALS BLOCK REVIEW
 
 For this block review, you have several specifications which need to be completed. You are expected to use full TDD in order to demonstrate your understanding of the questions and of good TDD practices. Good luck!
 
