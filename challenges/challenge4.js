@@ -4,4 +4,4 @@ function makePizza(pizzaOrder, cb) {
 
 };
 
-module.exports = makePizzas;
+module.exports = makePizza;
