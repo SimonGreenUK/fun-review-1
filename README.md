@@ -59,26 +59,6 @@ Please use the tests provided to help guide you in developing this function.
 
 ## Challenge 3
 
-### SECTION A
-
-Write a `Stock` class that will return stock instances.
-
-An instance of the `Stock` class must have the following properties:
-* name
-* price
-* quantity
-
-```js
-const marsBars = new Stock('marsBar', '50p', 6);
-
-marsBars.name; // 'marsBar'
-
-marsBars.price; // '50p'
-
-marsBars.quantity; // 6
-```
-
-### SECTION B
 
 Write a `VendingMachine` class that will return vending machine instances.
 
@@ -96,7 +76,7 @@ const testMachine = new VendingMachine();
 testMachine.credit; // 0;
 ```
 
-It must have a stock property, which will be an **object** with three alphabetical keys representing the rows of the machine. The values will be arrays, representing the rows of items in the machine. Individual positions in the machine can then be referenced by the row name and index position, e.g. `testMachine.stock.A[1]`.
+It must have a stock property, which will be an **object** of arrays, representing the rows of items in the machine.  Individual positions in the machine can then be referenced by the row name and index position e.g. `testMachine.stock.A[1]`
 
 ```js
 const testMachine = new VendingMachine();
@@ -109,10 +89,10 @@ C : [{},{},{}]
 **/
 ```
 
-It must have an `addStock` method which will add new stock instances to the vending machine at the correct position.
+It must have an `addStock` method which will add new stock to the vending machine at the correct position.
 
 ```js
-const marsBars = new Stock('marsBar', '50p', 6);
+const marsBars = { name: 'marsBar', price: '50p', quantity: 6 };
 const testMachine = new VendingMachine();
 testMachine.addStock(marsBars, 'A1');
 testMachine.stock;
@@ -137,7 +117,7 @@ testMachine.credit; // 60;
 It must have a `purchaseItem` method which will **decrease** the quantity of the stock if there is sufficient credit and it will add an item to the dispenser.
 
 ```js
-const marsBars = new Stock('marsBar', '50p', 6);
+const marsBars = { name: 'marsBar', price: '50p', quantity: 6 };
 const testMachine = new VendingMachine();
 testMachine.addStock(marsBars, 'A2');
 testMachine.addCredit(30);
@@ -162,7 +142,7 @@ testMachine.dispenser; // ['marsBar']
 
 ## Challenge 4
 
-### Make Pizzas
+### Make Pizza
 
 You're the supervisor of a fast-food pizza restaurant and your staff are having trouble keeping up with the orders. You decide that, as always, javascript has the answers, and you decide to build a function to improve the efficiency of your staff and solve all of your management woes.
 
