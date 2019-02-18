@@ -181,7 +181,7 @@ You have been provided with 3 async utility functions:
 
 All of these utility functions are asynchronous so you'll have to make use of callbacks in order to get your pizzas ready for delivery in one piece.
 
-**IMPORTANT** Your `preparePizza` function should not return anything - you must call upon the utils functions to get the pizza cooked and boxed, ready for delivery!
+**IMPORTANT** Your `makePizza` function should not return anything - you must call upon the utils functions to get the pizza cooked and boxed, ready for delivery!
 
 
 ## Challenge 5
