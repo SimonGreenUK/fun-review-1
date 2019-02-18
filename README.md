@@ -162,6 +162,30 @@ testMachine.dispenser; // ['marsBar']
 
 ## Challenge 4
 
+### Make Pizzas
+
+You're the supervisor of a fast-food pizza restaurant and your staff are having trouble keeping up with the orders. You decide that, as always, javascript has the answers, and you decide to build a function to improve the efficiency of your staff and solve all of your management woes.
+
+Your challenge is to write a function which processes a single pizza order, making it ready for delivery (cooked and boxed!)  Your function should take a `pizzaOrder` (string)and `cb` (an error-first callback function).  
+
+You have been provided with 3 async utility functions:
+
+`preparePizza` 
+- Takes a single pizza order and callback and invokes callback with a raw pizza.
+
+`cookPizza` 
+- Takes a single raw pizza and callback and and invokes callback returns a cooked pizza.
+
+`boxPizza` 
+- Takes a single cooked pizza and a callback and invokes callback with a boxedPizza
+
+All of these utility functions are asynchronous so you'll have to make use of callbacks in order to get your pizzas ready for delivery in one piece.
+
+**IMPORTANT** Your `preparePizza` function should not return anything - you must call upon the utils functions to get the pizza cooked and boxed, ready for delivery!
+
+
+## Challenge 5
+
 Implement a function called `deeplyEquals`. This function will check if two passed variables contain the same values. If passed *arrays* or *objects* the function will check the contents for equality.
 You will nee to use recursion in your implementation of this method.
 Be sure to build up your tests carefully and take care in building up your logic step by step.

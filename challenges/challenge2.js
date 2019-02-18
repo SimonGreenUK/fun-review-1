@@ -1,3 +1,3 @@
-function invert(func) {}
+function invert(func) { }
 
 module.exports = invert;

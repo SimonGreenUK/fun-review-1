@@ -1,3 +1,3 @@
-function createTally(arr) {}
+function createTally(items) { }
 
 module.exports = createTally;
