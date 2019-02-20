@@ -1,4 +1,4 @@
 const { expect } = require('chai');
-const deeplyEquals = require('../challenges/challenge4');
+const deeplyEquals = require('../challenges/challenge5');
 
 describe('deeplyEquals', () => { });
