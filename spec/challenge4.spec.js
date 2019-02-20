@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const makePizza = require('../challenges/challenge4');
 
 describe('makePizza()', () => {
-    it('invokes callback with empty array when passed an empty string', done => {
+    it('invokes callback with empty string when passed an empty string', done => {
         makePizza('', (err, delivery) => {
             expect(order).to.eql('');
             done();
