@@ -2,13 +2,49 @@
 
 For this block review, you have several specifications which need to be completed. You are expected to use full TDD in order to demonstrate your understanding of the questions and of good TDD practices. Good luck!
 
-## Challenge 1
+## Section 1 human-resources (Array Methods)
 
-Using the appropriate array method, write a function that creates a tally object for arrays. E.g
+For each of these challenges, be sure to use the appropriate array-method, and demonstrate your understanding of TDD. 
+
+### 1 - removeAgents
+
+After a survey of your organisation, it has transpired that a few of the respondents have been very open about committing corporate espionage. As a diligent HR professional, please remove each employee whose admitted profession is `mole`;
+
+Your function should take an array of people objects, and return a new array of people objects whose profession is not `mole`.
 
 ```js
-createTally(['cake', 'biscuit', 'biscuit']); // returns {cake: 1, biscuit: 2}
-createTally(['dog', 'dog', 'dog']); // returns {dog: 3}
+
+const employees = [
+  {name: 'Sam', profession: 'lecturer'}, 
+  {name: 'Mitch', profession: 'mole'}
+];
+
+removeAgents(employees) // returns [{name: 'Sam', profession: 'lecturer'}];
+
+```
+
+### 2 - makeNameTags
+
+You wouldn't usually be found doing work like this, but Jon is off sick, and the HR Director is having a meeting in a couple of hours. Please make name tags for each of the guests. 
+
+Given an array of guest objects containing `title`, `forename`, `lastname` and `company` keys, your makeNameTags function should return a new array with the text (formatted as `<title> <forename> <surname>, <company>`) for each name tag. 
+
+```js
+
+const guests = [{title: 'Mr', forename: 'Sam', surname: 'Caine', age: 30, company: 'Northcoders'}];
+
+makeNameTags(guests) // returns ['Mr Sam Caine, Northcoders']
+
+
+```
+
+### 3 - createPoll
+
+Usually we'd use survey monkey, but the managers have taken to building polls across the organisation as string. Give an array of these strings, please build a much more useful poll object. 
+
+```js
+createPoll(['cake', 'biscuit', 'biscuit']); // returns {cake: 1, biscuit: 2}
+createPoll(['dog', 'dog', 'dog']); // returns {dog: 3}
 ```
 
 Your final test should be using the NCFruitBowl from the challenge1-data file. _DO NOT COPY AND PASTE THIS INTO YOUR SPEC FILE - it's huge!_ Be sure to export it properly. It should return the following object:
