@@ -15,7 +15,7 @@ Your function should take an array of people objects, and return a new array of 
 ```js
 
 const employees = [
-  {name: 'Sam', profession: 'lecturer'}, 
+  {name: 'Sam', profession: 'artist'}, 
   {name: 'Mitch', profession: 'mole'}
 ];
 
@@ -25,7 +25,7 @@ removeAgents(employees) // returns [{name: 'Sam', profession: 'lecturer'}];
 
 ### 2 - makeNameTags
 
-You wouldn't usually be found doing work like this, but Jon is off sick, and the HR Director is having a meeting in a couple of hours. Please make name tags for each of the guests. 
+You wouldn't usually be found doing work like this, but Jon is off sick, and the HR Director is having a meeting in a couple of hours to discuss the recent espionage problems. Please make name tags for each of the guests. 
 
 Given an array of guest objects containing `title`, `forename`, `lastname` and `company` keys, your makeNameTags function should return a new array with the text (formatted as `<title> <forename> <surname>, <company>`) for each name tag. 
 
@@ -40,7 +40,7 @@ makeNameTags(guests) // returns ['Mr Sam Caine, Northcoders']
 
 ### 3 - createPoll
 
-Usually we'd use survey monkey, but the managers have taken to building polls across the organisation as string. Give an array of these strings, please build a much more useful poll object. 
+Usually we'd use survey monkey, but the managers have taken to building polls across the organisation as string. Given an array of strings, please build a much more useful poll object. 
 
 ```js
 createPoll(['cake', 'biscuit', 'biscuit']); // returns {cake: 1, biscuit: 2}
@@ -58,6 +58,59 @@ Your final test should be using the NCFruitBowl from the challenge1-data file. _
   'lonesome plum': 1
 }
 ```
+
+### 4 - ADVANCED - removeSmarterAgents
+
+*This challenge is advanced, if you've reached it, please proceed with the other sections before attempting this*
+
+It turns out there were even more corporate spies than the initial sweep of the organisation turned up. It's become obvious to the resident conspiracy theorist that the moles signify their presence to each other on the company social media platform's `interests` and `aboutMe` section. 
+
+If the `aboutMe` section, or a single `interest` includes the letters `m`, `o`, `l`, `e` in that order, they are almost certainly a spy and should be removed immediately. 
+
+Do what you can. 
+
+Examples of users to remove: 
+```js
+ const sam = {
+   name: 'Sam', 
+   age: 30,
+   aboutMe: 'I have no personality! :D', 
+   interests: ['code', 'guacamole']
+  }
+
+  // removed because of the interest guacamole!
+
+  const mitch = {
+    name: 'Mitch', 
+    age: 29, 
+    aboutMe: 'I am not a mole - I am a human being!', 
+    interests: ['Tudor hymns', 'dancing'];
+  }
+
+  // removed because of the word mole in aboutMe!
+
+  const jonny = {
+    name: 'Jonny', 
+    age: 32,
+    aboutMe: "I'm a father of two girls - it's great!", 
+    interests: ['parenting']
+  }
+
+  // removed about me contains the letters m, o, l, e. In that order: 
+  //i'M a father Of two girLs - it's grEat"
+
+  const vel = {
+    name: 'Vel', 
+    age: 28, 
+    aboutMe: 'I love games!', 
+    interests: ['Magic', 'Monopoly Express'];
+  }
+
+  // removed because the interest Monopoly Express contains the letters in the correct order. 
+```
+
+
+
 
 ## Challenge 2
 
