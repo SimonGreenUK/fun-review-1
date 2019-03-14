@@ -172,7 +172,7 @@ It should do the following:
 
 - If the function has been called with those arguments, it should return the output of the original function **WITHOUT** having to execute the functionality
 
-## Challenge 3
+## Section 3 - OOP Vending Machine
 
 Write a `VendingMachine` class that will return vending machine instances.
 
@@ -247,9 +247,9 @@ testMachine.stock;
 testMachine.credit; // 10
 ```
 
-## Challenge 4
+## Challenge 4 - Pizza Shop (ayschronous callbacks)
 
-### Make Pizza
+### 1 - makePizza
 
 You're the supervisor of a fast-food pizza restaurant and your staff are having trouble keeping up with the orders. You decide that, as always, javascript has the answers, and you decide to build a function to improve the efficiency of your staff and solve all of your management woes.
 
@@ -273,6 +273,16 @@ All of these utility functions are asynchronous so you'll have to make use of ca
 
 **IMPORTANT** Your `makePizza` function should not return anything - you must call upon the utils functions to get the pizza cooked and boxed, ready for delivery!
 
+You can use the pre-prepared tests for this.
+
+### 2 - makePizzas
+
+Now you've got dealing with a single order down, you need to build a function that handles an array of pizzas, and brings them back in the correct order.
+
+Using all the single pizza utils from before, write a function that takes an array and returns the prepared, cooked and boxed pizzas in an ordered array. You may not use a sort function.
+
+Do this with asynchronous TDD.
+
 ## Challenge 5
 
 Implement a function called `deeplyEquals`. This function will check if two passed variables contain the same values. If passed _arrays_ or _objects_ the function will check the contents for equality.
@@ -285,3 +295,5 @@ deeplyEquals("a", "b"); // false
 deeplyEquals([1, 2, { a: "hello" }], [1, 2, { a: "hello" }]); // true
 deeplyEquals([1, 2, { a: "hello" }], [1, 2, { a: "bye" }]); // false
 ```
+
+NOTE - do not use JSON.stringify for this. If you were considering it, well done, you're very smart.
