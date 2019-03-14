@@ -18,7 +18,7 @@ const employees = [
   { name: "Mitch", profession: "mole" }
 ];
 
-removeAgents(employees); // returns [{name: 'Sam', profession: 'lecturer'}];
+removeAgents(employees); // returns [{name: 'Sam', profession: 'artist'}];
 ```
 
 ### 2 - makeNameTags
