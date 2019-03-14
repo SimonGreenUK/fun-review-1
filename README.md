@@ -43,7 +43,7 @@ makeNameTags(guests); // returns ['Mr Sam Caine, Northcoders']
 
 ### 3 - createPoll
 
-Usually we'd use survey monkey, but the managers have taken to building polls across the organisation as string. Given an array of strings, please build a much more useful poll object.
+Usually we'd use survey monkey, but the managers have taken to building polls across the organisation as strings. Given an array of strings, please build a much more useful poll object.
 
 ```js
 createPoll(["cake", "biscuit", "biscuit"]); // returns {cake: 1, biscuit: 2}
@@ -66,7 +66,7 @@ Your final test should be using the NCFruitBowl from the challenge1-data file. _
 
 _This challenge is advanced, if you've reached it, please proceed with the other sections before attempting this_
 
-It turns out there were even more corporate spies than the initial sweep of the organisation turned up. It's become obvious to the resident conspiracy theorist that the moles signify their presence to each other on the company social media platform's `interests` and `aboutMe` section.
+It turns out there were even more corporate spies than the initial sweep of the organisation turned up. It's become obvious to the resident conspiracy theorist that the moles signify their presence to each other on the company's social media platform's `interests` and `aboutMe` section.
 
 If the `aboutMe` section, or a single `interest` includes the letters `m`, `o`, `l`, `e` in that order, they are almost certainly a spy and should be removed immediately.
 
