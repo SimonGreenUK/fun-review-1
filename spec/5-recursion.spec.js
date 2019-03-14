@@ -1,5 +1,6 @@
 const { expect } = require("chai");
-const { deeplyEquals, flat } = require("../challenges/5-recursion");
+const { deeplyEquals, flat, deepEntries } = require("../challenges/5-recursion");
 
-describe("deeplyEquals", () => {});
-describe("flat", () => {});
+describe("deepEntries", () => { });
+describe("deeplyEquals", () => { });
+describe("flat", () => { });

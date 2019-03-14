@@ -285,7 +285,34 @@ Do this with asynchronous TDD.
 
 ## Section 5 - Recursion
 
-### 1 - deeplyEquals
+
+### 1 - deepEntries
+
+Implement a function `deepEntries` that will take an object as its argument and go through that object to convert any nested-objects into an array of entries.  Each entry is itself a sub-array with the key-value pair from the original object.  You should use the native method [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) to help you in your implementation.
+
+```js
+
+deeplyEntries({name: "Sam" });  // returns [ ["name", "Sam"] ]
+deepEntries({ name: "Sam", favBook: "Blood Meridian" })
+// returns [ ["name", "Sam"], ["favBook", "Blood Meridian"] ]
+
+// more nested object
+deepEntries({name: "Sam", pets : {name: "fido"}}) 
+/** returns [
+  ["name", "Sam"],
+  [pets,[["name", "fido"]]]
+]
+**/
+// even more nesting...
+deepEntries({ name: "Sam", favBook: { title: "Blood Meridian", author: { name: "Cormac McCarthy"} } }); 
+/** returns [
+  ["name","Sam"],
+  ["favBook",[["title","Blood Meridian"],["author", [["name","Cormac McCarthy"]]]
+]
+**/
+```
+
+### 2 - deeplyEquals
 
 Implement a function called `deeplyEquals`. This function will check if two passed variables contain the same values. If passed _arrays_ or _objects_ the function will check the contents for equality.
 You will nee to use recursion in your implementation of this method.
@@ -300,6 +327,6 @@ deeplyEquals([1, 2, { a: "hello" }], [1, 2, { a: "bye" }]); // false
 
 NOTE - do not use JSON.stringify for this. If you were considering it, well done, you're very smart.
 
-### 2 - flat
+### 3 - flat
 
 Reimplement the experimental array method `flat`. You can find the [docs here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
