@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { VendingMachine } = require('../challenges/challenge3');
+const { VendingMachine } = require('../challenges/3-oop-vending-machine');
 
 
 describe('VendingMachine', () => { });
