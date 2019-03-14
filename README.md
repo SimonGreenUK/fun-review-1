@@ -247,7 +247,7 @@ testMachine.stock;
 testMachine.credit; // 10
 ```
 
-## Challenge 4 - Pizza Shop (ayschronous callbacks)
+## Section 4 - Pizza Shop (ayschronous callbacks)
 
 ### 1 - makePizza
 
@@ -283,7 +283,9 @@ Using all the single pizza utils from before, write a function that takes an arr
 
 Do this with asynchronous TDD.
 
-## Challenge 5
+## Section 5 - Recursion
+
+### 1 - deeplyEquals
 
 Implement a function called `deeplyEquals`. This function will check if two passed variables contain the same values. If passed _arrays_ or _objects_ the function will check the contents for equality.
 You will nee to use recursion in your implementation of this method.
@@ -297,3 +299,7 @@ deeplyEquals([1, 2, { a: "hello" }], [1, 2, { a: "bye" }]); // false
 ```
 
 NOTE - do not use JSON.stringify for this. If you were considering it, well done, you're very smart.
+
+### 2 - flat
+
+Reimplement the experimental array method `flat`. You can find the [docs here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)

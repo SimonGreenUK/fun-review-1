@@ -1,3 +1,5 @@
-function deeplyEquals(a, b) {}
+const deeplyEquals = () => {};
 
-module.exports = deeplyEquals;
+const flat = () => {};
+
+module.exports = { deeplyEquals, flat };
