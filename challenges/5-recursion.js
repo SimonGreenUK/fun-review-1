@@ -1,5 +1,8 @@
-const deeplyEquals = () => {};
 
-const flat = () => {};
+const deepEntries = () => { };
 
-module.exports = { deeplyEquals, flat };
+const deeplyEquals = () => { };
+
+const flat = () => { };
+
+module.exports = { deeplyEquals, flat, deepEntries };
