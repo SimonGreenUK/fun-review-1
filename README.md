@@ -204,7 +204,7 @@ const testMachine = new VendingMachine();
 testMachine.addStock(marsBars, "A");
 testMachine.stock;
 /**
-{ A: { name: 'marsBar', price: '50p', quantity: 6 },
+{ A: { name: 'marsBar', price: 50, quantity: 6 },
   B: {},
   C: {} }
  **/
@@ -239,7 +239,7 @@ testMachine.addCredit(60);
 testMachine.purchaseItem("A"); // returns 'marsBar'
 testMachine.stock;
 /**
-{ A: { name: 'marsBar', price: '50p', quantity: 5 },
+{ A: { name: 'marsBar', price: 50, quantity: 5 },
   B: {},
   C: {}
 }
