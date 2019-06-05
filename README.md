@@ -300,7 +300,7 @@ deepEntries({ name: "Sam", favBook: "Blood Meridian" })
 deepEntries({name: "Sam", pets : {name: "fido"}}) 
 /** returns [
   ["name", "Sam"],
-  [pets,[["name", "fido"]]]
+  ["pets",[["name", "fido"]]]
 ]
 **/
 // even more nesting...
