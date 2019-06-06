@@ -8,9 +8,9 @@ describe("invert", () => {
     expect(newFunc).to.be.a("function");
   });
   it("the returned function negates the return value of a function taking no arguments", () => {
-    const returnsTrue = () => true;
-    const returnsFalse = invert(returnsTrue);
-    expect(returnsFalse()).to.be.false;
+    const returnsFalse = () => false;
+    const returnsTrue = invert(returnsFalse);
+    expect(returnsTrue()).to.be.true;
   });
   it("the returned function negates the return value of a function taking one argument", () => {
     const isEven = n => n % 2 === 0;
