@@ -1,112 +1,114 @@
-const { expect } = require("chai");
-const { invert, flip, rememberMe } = require("../challenges/2-closure");
-const sinon = require("sinon");
+const { expect } = require('chai');
+const { invert, flip, rememberMe } = require('../challenges/2-closure');
+const { spy } = require('sinon');
 
-describe("invert", () => {
-  it("returns a new function", () => {
-    const newFunc = invert();
-    expect(newFunc).to.be.a("function");
+describe('invert', () => {
+  it('returns a new function', () => {
+    const originalFunc = function() {};
+    const invertedOriginalFunc = invert(originalFunc);
+    expect(invertedOriginalFunc).to.be.a('function');
+    expect(invertedOriginalFunc).to.not.equal(originalFunc);
   });
-  it("the returned function negates the return value of a function taking no arguments", () => {
-    const returnsFalse = () => false;
-    const returnsTrue = invert(returnsFalse);
-    expect(returnsTrue()).to.be.true;
+  it("new function's first argument is passed to the original function",() => {
+    let originalFunc = spy();
+    let invertedOriginalFunc = invert(originalFunc);
+    invertedOriginalFunc('a');
+    expect(originalFunc.args[0]).to.eql(['a']);
+  })
+  it("new function's first 2 arguments are passed to the original function", () => {
+    let originalFunc = spy();
+    let invertedOriginalFunc = invert(originalFunc);
+    invertedOriginalFunc(1, 2);
+    expect(originalFunc.args[0]).to.eql([1, 2]);
   });
-  it("the returned function negates the return value of a function taking one argument", () => {
-    const isEven = n => n % 2 === 0;
-    const isOdd = invert(isEven);
-    let actual = isOdd(13);
-    expect(actual).to.be.true;
-    actual = isOdd(10);
-    expect(actual).to.be.false;
+  it("all of the new function's arguments are passed to the original function",() => {
+    let originalFunc = spy();
+    let invertedOriginalFunc = invert(originalFunc);
+    invertedOriginalFunc(1, 2, 3, 4, 5);
+    expect(originalFunc.args[0]).to.eql([1, 2, 3, 4, 5]);
+    originalFunc = spy();
+    invertedOriginalFunc = invert(originalFunc);
+    invertedOriginalFunc('a','c','hello',1,2);
+    expect(originalFunc.args[0]).to.eql(['a','c','hello',1,2]);
   });
-  it("invert works for functions taking any number of arguments", () => {
-    const isSumBiggerThan100 = function(...args) {
-      return args.reduce((acc, val) => acc + val) > 100;
-    };
-    const isSumLessThanOrEqualTo100 = invert(isSumBiggerThan100);
-    actual = isSumLessThanOrEqualTo100(10, 3, 8, 5, 4, 20);
-    expect(actual).to.be.true;
-    actual = isSumLessThanOrEqualTo100(70, 10, 50, 23);
-    expect(actual).to.be.false;
+  it('new function returns negated invocation of the original function', () => {
+    let returnsFalse = () => false;
+    let returnsTrue = invert(returnsFalse);
+    expect(returnsTrue()).to.equal(!returnsFalse());
+    let checkIsOdd = (num) => num % 2 === 1;
+    let checkIsEven = invert(checkIsOdd);
+    expect(checkIsEven(100)).to.equal(!checkIsOdd(100));
+    expect(checkIsEven(13)).to.equal(!checkIsOdd(13));
+    let isBiggerThan100 = (a, b, c, d) => a + b + c + d > 100;
+    let isLessThanOrEqualTo100 = invert(isBiggerThan100);
+    expect(isLessThanOrEqualTo100(10, 10, 10, 10)).to.equal(!isBiggerThan100(10, 10, 10, 10));
+    expect(isLessThanOrEqualTo100(49, 49, 1, 1)).to.equal(!isBiggerThan100(49, 49, 1, 1));
+    expect(isLessThanOrEqualTo100(100, 1, 1, 1)).to.equal(!isBiggerThan100(100, 1, 1, 1));
   });
 });
 
-describe("#flip", () => {
-  it("returns a new function", () => {
-    const newFunc = flip();
-    expect(newFunc).to.be.a("function");
+describe('flip', () => {
+  it('returns a new function', () => {
+    const originalFunc = function() {};
+    const flippedOriginalFunc = flip(originalFunc);
+    expect(flippedOriginalFunc).to.be.a('function');
+    expect(flippedOriginalFunc).to.not.equal(originalFunc);
   });
-  it("function returned by flip returns an invocation to the passed binary function with the arguments in reverse order", () => {
-    const subtract = (a, b) => a - b;
-    const flipSubtract = flip(subtract);
-    const actual = flipSubtract(10, 3);
-    const expected = -7;
+  it("new function's first argument is passed to the original function", () => {
+    let originalFunc = spy();
+    let flippedOriginalFunc = flip(originalFunc);
+    flippedOriginalFunc('a');
+    expect(originalFunc.args[0]).to.eql(['a']);
+  });
+  it("new function's first 2 arguments are passed to the original function in reverse order", () => {
+    let originalFunc = spy();
+    let flippedOriginalFunc = flip(originalFunc);
+    flippedOriginalFunc(1, 2);
+    expect(originalFunc.args[0]).to.eql([2, 1]);
+    originalFunc = spy();
+    flippedOriginalFunc = flip(originalFunc);
+    flippedOriginalFunc('a', 'b');
+    expect(originalFunc.args[0]).to.eql(['b', 'a']);
+  });
+  it("all of the new function's arguments are passed to the original function in reverse order", () => {
+    let originalFunc = spy();
+    let flippedOriginalFunc = flip(originalFunc);
+    flippedOriginalFunc(1, 2, 3, 4, 5);
+    expect(originalFunc.args[0]).to.eql([5, 4, 3, 2, 1]);
+    originalFunc = spy();
+    flippedOriginalFunc = flip(originalFunc);
+    flippedOriginalFunc('hello','northcoders',42,100,2019);
+    expect(originalFunc.args[0]).to.eql([2019, 100, 42, 'northcoders', 'hello']);
+  });
+  it('new function returns invocation of original func', () => {
+    let subtract = (a, b) => a - b;
+    let flipSubtract = flip(subtract);
+    let actual = flipSubtract(10, 3);
+    let expected = -7;
     expect(actual).to.equal(expected);
-  });
-  it("function returned by flip returns an invocation to the passed binary function with the arguments in reverse order", () => {
-    const doArithmetic = (a, b, c) => a * b + c;
-    const doFlippedArithmetic = flip(doArithmetic);
-    const actual = doFlippedArithmetic(10, 3, 5);
-    const expected = 25;
-    expect(actual).to.equal(expected);
-  });
-  it("function returned by flip returns an invocation to the passed function (taking any number of arguments) with the arguments in reverse order", () => {
-    function joinWithHyphen(...args) {
-      return args.join("-");
-    }
-    const alphabet = [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-      "n",
-      "o",
-      "p",
-      "q",
-      "r",
-      "s",
-      "t",
-      "u",
-      "v",
-      "w",
-      "x",
-      "y",
-      "z"
-    ];
-    let randomSliceIndex = Math.floor(Math.random() * 26);
-    const flipJoinWithHyphen = flip(joinWithHyphen);
-    const input = alphabet.slice(0, randomSliceIndex);
-    const actual = flipJoinWithHyphen(...input);
-    const expected = input.reverse().join("-");
+    let joinChars = (...letters) => letters.join('-');
+    let flipJoin = flip(joinChars);
+    actual = flipJoin('a','b','c','d','e');
+    expected = 'e-d-c-b-a';
     expect(actual).to.equal(expected);
   });
 });
 
-describe("rememberMe", () => {
-  it("returns a new function", () => {
-    expect(rememberMe()).to.be.a("function");
+describe('rememberMe', () => {
+  it('returns a new function', () => {
+    expect(rememberMe()).to.be.a('function');
   });
-  it("maintains the functionality of the input function when no args are passed", () => {
+  it('maintains the functionality of the input function when no args are passed', () => {
     const returnTwo = () => 2;
     const rememberReturnTwo = rememberMe(returnTwo);
     expect(rememberReturnTwo()).to.equal(2);
   });
-  it("maintain the functionality of the input function with args", () => {
+  it('maintain the functionality of the input function with args', () => {
     const addNums = (a, b, c, d, e) => a + b + c + d + e;
     const rememberAddNums = rememberMe(addNums);
     expect(rememberAddNums(1, 2, 3, 4, 5)).to.equal(15);
   });
-  it("only calls the function once per unique set of arguments", () => {
+  it('only calls the function once per unique set of arguments', () => {
     const addNums = (a, b, c, d, e) => a + b + c + d + e;
     const spiedAdder = sinon.spy(addNums);
     const rememberSpiedAdder = rememberMe(spiedAdder);
