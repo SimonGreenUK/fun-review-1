@@ -110,7 +110,7 @@ describe('rememberMe', () => {
   });
   it('only calls the function once per unique set of arguments', () => {
     const addNums = (a, b, c, d, e) => a + b + c + d + e;
-    const spiedAdder = sinon.spy(addNums);
+    const spiedAdder = spy(addNums);
     const rememberSpiedAdder = rememberMe(spiedAdder);
     expect(rememberSpiedAdder(1, 2, 3, 4, 5)).to.equal(15);
     expect(rememberSpiedAdder(1, 2, 3, 4, 5)).to.equal(15);
