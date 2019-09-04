@@ -1,18 +1,15 @@
+// 1
 
-// 1 
-
-function removeAgents (people) {
-
+function removeAgents(people) {
+  return people.filter((person) => person.profession !== 'mole');
 }
 
 // 2
 
-function makeNameTags (guests) {
-
-}
+function makeNameTags(guests) {}
 
 // 3
 
-function createPoll(items) { }
+function createPoll(items) {}
 
-
+module.exports = { removeAgents, makeNameTags, createPoll };
