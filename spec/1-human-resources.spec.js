@@ -35,7 +35,7 @@ describe('removeAgents', () => {
   });
 });
 
-describe.only('makeNameTags', () => {
+describe('makeNameTags', () => {
   it('returns an array with a single name tag when passed an array containing only one object', () => {
     expect(
       makeNameTags([
@@ -75,5 +75,33 @@ describe.only('makeNameTags', () => {
         },
       ])
     ).to.eql(['Mr Sam Caine, Northcoders', 'Mr Dan Abramov, Facebook', 'Mr Wes Bos, Wes Bos Inc.']);
+  });
+});
+
+describe.only('createPoll', () => {
+  it('returns an object where the key reflects the item in the passed in array and the value is 1', () => {
+    expect(createPoll(['cake'])).to.eql({ cake: 1 });
+  });
+  it('returns an object with two different keys each with a value of 1 when the passed in an array containing two unique items', () => {
+    expect(createPoll(['cake', 'biscuits'])).to.eql({ cake: 1, biscuits: 1 });
+  });
+  it('returns an object with one key with a value of 2 when the passed in array contains two of the same items', () => {
+    expect(createPoll(['cake', 'cake'])).to.eql({ cake: 2 });
+  });
+  it('returns an object with two different keys, the first with a value of 1 and the second with a value of 3 when the passed in an array contains four items in total but only two unique items', () => {
+    expect(createPoll(['crisps', 'cake', 'cake', 'cake'])).to.eql({
+      crisps: 1,
+      cake: 3,
+    });
+  });
+  it('return an object with keys for each unique item and their respective counts when passed an array containing a mixture of unique and non-unique items', () => {
+    expect(
+      createPoll(['chocolate', 'crisps', 'cake', 'cake', 'crisps', 'cake', 'fruit', 'chocolate'])
+    ).to.eql({
+      chocolate: 2,
+      crisps: 2,
+      cake: 3,
+      fruit: 1,
+    });
   });
 });

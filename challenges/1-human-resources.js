@@ -14,6 +14,16 @@ function makeNameTags(guests) {
 
 // 3
 
-function createPoll(items) {}
+function createPoll(items) {
+  let pollResults = {};
+  items.map((item) => {
+    if (pollResults[item] === undefined) {
+      return (pollResults[item] = 1);
+    } else {
+      return pollResults[item]++;
+    }
+  });
+  return pollResults;
+}
 
 module.exports = { removeAgents, makeNameTags, createPoll };
