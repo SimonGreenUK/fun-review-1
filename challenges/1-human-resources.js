@@ -16,7 +16,7 @@ function makeNameTags(guests) {
 
 function createPoll(items) {
   let pollResults = {};
-  items.map((item) => {
+  items.forEach((item) => {
     if (pollResults[item] === undefined) {
       return (pollResults[item] = 1);
     } else {

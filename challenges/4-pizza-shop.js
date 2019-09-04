@@ -20,4 +20,17 @@ function makePizza(pizzaOrder, cb) {
   });
 }
 
-module.exports = makePizza;
+function makePizzas(pizzaOrderArray, cb) {
+  let resultArray = [];
+  let count = 0;
+  pizzaOrderArray.forEach((pizza, index) => {
+    makePizza(pizza, (err, finishedPizza) => {
+      resultArray[index] = finishedPizza;
+      if (++count == pizzaOrderArray.length) {
+        cb(null, resultArray);
+      }
+    });
+  });
+}
+
+module.exports = { makePizza, makePizzas };
