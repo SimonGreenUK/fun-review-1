@@ -16,7 +16,7 @@ describe('makePizza()', () => {
   });
 });
 
-describe.only('makePizzas', () => {
+describe('makePizzas', () => {
   it('returns an array with a pizza order when passed an array with a single order', (done) => {
     makePizzas(['margherita'], (err, delivery) => {
       expect(delivery).to.eql(['a hot margherita in a well designed box']);

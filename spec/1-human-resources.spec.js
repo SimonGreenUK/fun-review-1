@@ -3,6 +3,16 @@ const { removeAgents, makeNameTags, createPoll } = require('../challenges/1-huma
 const NCFruitBowl = require('../data/challenge1-data');
 
 describe('removeAgents', () => {
+  it('returns an empty array when passed an empty array', () => {
+    const actual = removeAgents([]);
+    const expected = [];
+    expect(actual).to.eql(expected);
+  });
+  it('does not mutate the passed in array', () => {
+    const input = [];
+    const actual = removeAgents(input);
+    expect(actual).to.not.equal(input);
+  });
   it('returns an array containing an object with an employee with the profession of "artist" when passed an array with one object where the employees profession is "artist"', () => {
     expect(removeAgents([{ name: 'Sam', profession: 'artist' }])).to.eql([
       { name: 'Sam', profession: 'artist' },
@@ -37,6 +47,16 @@ describe('removeAgents', () => {
 });
 
 describe('makeNameTags', () => {
+  it('returns an empty array when passed an empty array', () => {
+    const actual = makeNameTags([]);
+    const expected = [];
+    expect(actual).to.eql(expected);
+  });
+  it('does not mutate the passed in array', () => {
+    const input = [];
+    const actual = makeNameTags(input);
+    expect(actual).to.not.equal(input);
+  });
   it('returns an array with a single name tag when passed an array containing only one object', () => {
     expect(
       makeNameTags([
@@ -79,7 +99,7 @@ describe('makeNameTags', () => {
   });
 });
 
-describe('createPoll', () => {
+describe.only('createPoll', () => {
   it('returns an empty object when passed an empty array', () => {
     expect(createPoll([])).to.eql({});
   });
