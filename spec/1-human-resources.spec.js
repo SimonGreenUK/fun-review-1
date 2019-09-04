@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { removeAgents, makeNameTags, createPoll } = require('../challenges/1-human-resources');
+const NCFruitBowl = require('../data/challenge1-data');
 
 describe('removeAgents', () => {
   it('returns an array containing an object with an employee with the profession of "artist" when passed an array with one object where the employees profession is "artist"', () => {
@@ -102,6 +103,15 @@ describe.only('createPoll', () => {
       crisps: 2,
       cake: 3,
       fruit: 1,
+    });
+  });
+  it('returns and object with keys of each unique item and their respective count when passed an array from challenge1-data.js', () => {
+    expect(createPoll(NCFruitBowl)).to.eql({
+      apple: 276,
+      pear: 223,
+      banana: 263,
+      orange: 238,
+      'lonesome plum': 1,
     });
   });
 });

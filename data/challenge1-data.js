@@ -999,7 +999,7 @@ const NCFruitBowl = [
   'banana',
   'orange',
   'orange',
-  'orange'
+  'orange',
 ];
 
 module.exports = NCFruitBowl;
