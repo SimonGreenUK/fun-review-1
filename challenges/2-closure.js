@@ -1,4 +1,9 @@
-const invert = () => {};
+const invert = (originalFunc) => {
+  function newFunc(...args) {
+    return !originalFunc(...args);
+  }
+  return newFunc;
+};
 
 const flip = () => {};
 

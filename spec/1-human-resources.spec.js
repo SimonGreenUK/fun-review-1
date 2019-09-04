@@ -79,7 +79,7 @@ describe('makeNameTags', () => {
   });
 });
 
-describe.only('createPoll', () => {
+describe('createPoll', () => {
   it('returns an object where the key reflects the item in the passed in array and the value is 1', () => {
     expect(createPoll(['cake'])).to.eql({ cake: 1 });
   });

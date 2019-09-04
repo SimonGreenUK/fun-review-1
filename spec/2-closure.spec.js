@@ -9,27 +9,27 @@ describe('invert', () => {
     expect(invertedOriginalFunc).to.be.a('function');
     expect(invertedOriginalFunc).to.not.equal(originalFunc);
   });
-  it("new function's first argument is passed to the original function",() => {
+  it("new function's first argument is passed to the original function", () => {
     let originalFunc = spy();
     let invertedOriginalFunc = invert(originalFunc);
     invertedOriginalFunc('a');
     expect(originalFunc.args[0]).to.eql(['a']);
-  })
+  });
   it("new function's first 2 arguments are passed to the original function", () => {
     let originalFunc = spy();
     let invertedOriginalFunc = invert(originalFunc);
     invertedOriginalFunc(1, 2);
     expect(originalFunc.args[0]).to.eql([1, 2]);
   });
-  it("all of the new function's arguments are passed to the original function",() => {
+  it("all of the new function's arguments are passed to the original function", () => {
     let originalFunc = spy();
     let invertedOriginalFunc = invert(originalFunc);
     invertedOriginalFunc(1, 2, 3, 4, 5);
     expect(originalFunc.args[0]).to.eql([1, 2, 3, 4, 5]);
     originalFunc = spy();
     invertedOriginalFunc = invert(originalFunc);
-    invertedOriginalFunc('a','c','hello',1,2);
-    expect(originalFunc.args[0]).to.eql(['a','c','hello',1,2]);
+    invertedOriginalFunc('a', 'c', 'hello', 1, 2);
+    expect(originalFunc.args[0]).to.eql(['a', 'c', 'hello', 1, 2]);
   });
   it('new function returns negated invocation of the original function', () => {
     let returnsFalse = () => false;
@@ -77,7 +77,7 @@ describe('flip', () => {
     expect(originalFunc.args[0]).to.eql([5, 4, 3, 2, 1]);
     originalFunc = spy();
     flippedOriginalFunc = flip(originalFunc);
-    flippedOriginalFunc('hello','northcoders',42,100,2019);
+    flippedOriginalFunc('hello', 'northcoders', 42, 100, 2019);
     expect(originalFunc.args[0]).to.eql([2019, 100, 42, 'northcoders', 'hello']);
   });
   it('new function returns invocation of original func', () => {
@@ -88,7 +88,7 @@ describe('flip', () => {
     expect(actual).to.equal(expected);
     let joinChars = (...letters) => letters.join('-');
     let flipJoin = flip(joinChars);
-    actual = flipJoin('a','b','c','d','e');
+    actual = flipJoin('a', 'b', 'c', 'd', 'e');
     expected = 'e-d-c-b-a';
     expect(actual).to.equal(expected);
   });
