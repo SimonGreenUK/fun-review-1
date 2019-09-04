@@ -6,7 +6,11 @@ function removeAgents(people) {
 
 // 2
 
-function makeNameTags(guests) {}
+function makeNameTags(guests) {
+  return guests.map((guest) => {
+    return `${guest.title} ${guest.forename} ${guest.surname}, ${guest.company}`;
+  });
+}
 
 // 3
 

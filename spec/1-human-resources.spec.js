@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { removeAgents, makeNameTags, createPoll } = require('../challenges/1-human-resources');
 
-describe.only('removeAgents', () => {
+describe('removeAgents', () => {
   it('returns an array containing an object with an employee with the profession of "artist" when passed an array with one object where the employees profession is "artist"', () => {
     expect(removeAgents([{ name: 'Sam', profession: 'artist' }])).to.eql([
       { name: 'Sam', profession: 'artist' },
@@ -32,5 +32,48 @@ describe.only('removeAgents', () => {
       { name: 'Liam', profession: 'tutor' },
       { name: 'Sherpal', profession: 'chef' },
     ]);
+  });
+});
+
+describe.only('makeNameTags', () => {
+  it('returns an array with a single name tag when passed an array containing only one object', () => {
+    expect(
+      makeNameTags([
+        {
+          title: 'Mr',
+          forename: 'Sam',
+          surname: 'Caine',
+          age: 30,
+          company: 'Northcoders',
+        },
+      ])
+    ).to.eql(['Mr Sam Caine, Northcoders']);
+  });
+  it('returns an array containing name tags for all the objects contained in the passed in array', () => {
+    expect(
+      makeNameTags([
+        {
+          title: 'Mr',
+          forename: 'Sam',
+          surname: 'Caine',
+          age: 30,
+          company: 'Northcoders',
+        },
+        {
+          title: 'Mr',
+          forename: 'Dan',
+          surname: 'Abramov',
+          age: 27,
+          company: 'Facebook',
+        },
+        {
+          title: 'Mr',
+          forename: 'Wes',
+          surname: 'Bos',
+          age: 31,
+          company: 'Wes Bos Inc.',
+        },
+      ])
+    ).to.eql(['Mr Sam Caine, Northcoders', 'Mr Dan Abramov, Facebook', 'Mr Wes Bos, Wes Bos Inc.']);
   });
 });
