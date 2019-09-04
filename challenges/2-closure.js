@@ -5,7 +5,12 @@ const invert = (originalFunc) => {
   return newFunc;
 };
 
-const flip = () => {};
+const flip = (originalFunc) => {
+  function newFunc(...args) {
+    return originalFunc(...args.reverse());
+  }
+  return newFunc;
+};
 
 const rememberMe = () => {};
 

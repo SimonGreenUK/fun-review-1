@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { VendingMachine } = require('../challenges/3-oop-vending-machine');
 
-describe.only('VendingMachine', () => {
+describe('VendingMachine', () => {
   it('returns a new VendingMachine instance with a credit property of 0 when not passed a credit argument', () => {
     const TestVendingMachine = new VendingMachine();
     expect(TestVendingMachine.credit).to.equal(0);

@@ -47,7 +47,7 @@ describe('invert', () => {
   });
 });
 
-describe('flip', () => {
+describe.only('flip', () => {
   it('returns a new function', () => {
     const originalFunc = function() {};
     const flippedOriginalFunc = flip(originalFunc);
