@@ -25,11 +25,11 @@ function createPoll(items) {
 // 4
 
 function removeSmarterAgents(people) {
-  return people.filter((person) => {
+  const filteredInterests = people.filter((person) => {
     return !/mole/g.test(person.interests.join(''));
   });
 
-  // make work for about me as well
+  return filteredInterests.filter((person) => !person.aboutMe.includes('mole'));
 }
 
 module.exports = { removeAgents, makeNameTags, createPoll, removeSmarterAgents };

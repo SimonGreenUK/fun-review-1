@@ -178,15 +178,39 @@ describe.only('removeSmarterAgents', () => {
       },
     ]);
   });
-  // it('returns an empty array when passed an array with one person object which contains the word "mole" their aboutMe section', () => {
-  //   const testPeople = [
-  //     {
-  //       name: 'Mitch',
-  //       age: 29,
-  //       aboutMe: 'I am not a mole - I am a human being!',
-  //       interests: ['Tudor hymns', 'dancing'];
-  //     }
-  //   ];
-  //   expect(removeSmarterAgents(testPeople)).to.eql([]);
-  // });
+  it('returns an empty array when passed an array with one person object which contains the word "mole" their aboutMe section', () => {
+    const testPeople = [
+      {
+        name: 'Mitch',
+        age: 29,
+        aboutMe: 'I am not a mole - I am a human being!',
+        interests: ['Tudor hymns', 'dancing'],
+      },
+    ];
+    expect(removeSmarterAgents(testPeople)).to.eql([]);
+  });
+  it('returns an array with one person when passed an array with two person objects, one of which contains the word "mole" their aboutMe section and the other does not contain mole in either the aboutMe or interests', () => {
+    const testPeople = [
+      {
+        name: 'Mitch',
+        age: 29,
+        aboutMe: 'I am not a mole - I am a human being!',
+        interests: ['Tudor hymns', 'dancing'],
+      },
+      {
+        name: 'Jim',
+        age: 19,
+        aboutMe: 'I speak French!',
+        interests: ['cigars', 'France'],
+      },
+    ];
+    expect(removeSmarterAgents(testPeople)).to.eql([
+      {
+        name: 'Jim',
+        age: 19,
+        aboutMe: 'I speak French!',
+        interests: ['cigars', 'France'],
+      },
+    ]);
+  });
 });
