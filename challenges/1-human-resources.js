@@ -15,15 +15,21 @@ function makeNameTags(guests) {
 // 3
 
 function createPoll(items) {
-  let pollResults = {};
-  items.forEach((item) => {
-    if (pollResults[item] === undefined) {
-      return (pollResults[item] = 1);
-    } else {
-      return pollResults[item]++;
-    }
-  });
-  return pollResults;
+  return items.reduce((allItems, item) => {
+    if (allItems[item] === undefined) allItems[item] = 1;
+    else allItems[item]++;
+    return allItems;
+  }, {});
 }
 
-module.exports = { removeAgents, makeNameTags, createPoll };
+// 4
+
+function removeSmarterAgents(people) {
+  return people.filter((person) => {
+    return !/mole/g.test(person.interests.join(''));
+  });
+
+  // make work for about me as well
+}
+
+module.exports = { removeAgents, makeNameTags, createPoll, removeSmarterAgents };

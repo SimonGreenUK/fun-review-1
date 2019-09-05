@@ -1,5 +1,10 @@
 const { expect } = require('chai');
-const { removeAgents, makeNameTags, createPoll } = require('../challenges/1-human-resources');
+const {
+  removeAgents,
+  makeNameTags,
+  createPoll,
+  removeSmarterAgents,
+} = require('../challenges/1-human-resources');
 const NCFruitBowl = require('../data/challenge1-data');
 
 describe('removeAgents', () => {
@@ -99,7 +104,7 @@ describe('makeNameTags', () => {
   });
 });
 
-describe.only('createPoll', () => {
+describe('createPoll', () => {
   it('returns an empty object when passed an empty array', () => {
     expect(createPoll([])).to.eql({});
   });
@@ -137,4 +142,51 @@ describe.only('createPoll', () => {
       'lonesome plum': 1,
     });
   });
+});
+
+describe.only('removeSmarterAgents', () => {
+  it('returns an empty array when passed an empty array', () => {
+    const testArray = [];
+    expect(removeSmarterAgents(testArray)).to.eql([]);
+  });
+  it('returns an empty array when passed an array with one person object which contains the word "mole" in interests', () => {
+    const testPeople = [
+      {
+        name: 'Sam',
+        age: 30,
+        aboutMe: 'I have no personality! :D',
+        interests: ['code', 'guacamole'],
+      },
+    ];
+    expect(removeSmarterAgents(testPeople)).to.eql([]);
+  });
+  it('returns an array containing one person object when passed an array with one person object which does not contain the word "mole" in interests', () => {
+    const testPeople = [
+      {
+        name: 'Tom',
+        age: 25,
+        aboutMe: 'I love to surf',
+        interests: ['code', 'cars', 'coffee'],
+      },
+    ];
+    expect(removeSmarterAgents(testPeople)).to.eql([
+      {
+        name: 'Tom',
+        age: 25,
+        aboutMe: 'I love to surf',
+        interests: ['code', 'cars', 'coffee'],
+      },
+    ]);
+  });
+  // it('returns an empty array when passed an array with one person object which contains the word "mole" their aboutMe section', () => {
+  //   const testPeople = [
+  //     {
+  //       name: 'Mitch',
+  //       age: 29,
+  //       aboutMe: 'I am not a mole - I am a human being!',
+  //       interests: ['Tudor hymns', 'dancing'];
+  //     }
+  //   ];
+  //   expect(removeSmarterAgents(testPeople)).to.eql([]);
+  // });
 });
